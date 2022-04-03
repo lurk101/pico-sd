@@ -12,7 +12,7 @@ static uint8_t sector_data[1024];
 
 int main(void) {
     set_sys_clock_48mhz();
-    stdio_init_all();
+    stdio_init();
 
     printf("SD Card test\n");
 
