@@ -1,0 +1,6 @@
+[submodule "sd-lib"]
+	path = sd-lib
+	url = https://github.com/lurk101/sd-lib.git
+[submodule "stdinit-lib"]
+	path = stdinit-lib
+	url = https://github.com/lurk101/stdinit-lib.git
