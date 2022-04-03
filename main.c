@@ -8,7 +8,7 @@
 
 static uint8_t sector_data[1024];
 
-#define ENABLE_4_PIN 0
+#define ENABLE_4_PIN 1
 
 int main(void) {
     set_sys_clock_48mhz();
@@ -20,15 +20,8 @@ int main(void) {
 
     // 0-2 for SD_CLK, SD_CMD, SD_DAT
 
-    int sd_pin_base = 25;
-
-    //    gpio_init(0);
-    //    gpio_init(5);
-    //    gpio_init(10);
-    //    gpio_set_dir_out_masked(0x421);
-
 #if ENABLE_4_PIN
-    if (sd_init_4pin() < 0)
+    if (sd_init_4pins() < 0)
 #else
     if (sd_init_1pin() < 0)
 #endif
@@ -102,7 +95,6 @@ int main(void) {
         }
     }
 
-#if 0
     strcpy(sector_data, "fish And Hello there zif squiffy!");
     sector_data[511] = 0xaa;
     sd_writeblocks_async((uint32_t*)sector_data, 0, 1);
@@ -122,7 +114,6 @@ int main(void) {
         printf("Waiting for completion\n");
         if (!--timeout) break;
     }
-#endif
     printf("Done!\n");
     __breakpoint();
 }
